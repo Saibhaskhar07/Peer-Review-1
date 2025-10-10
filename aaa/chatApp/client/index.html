@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>chatApp</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="topbar">
+    <h1 class="app-title">chatApp</h1>
+  </header>
+
+  <!-- Pre-join panel -->
+  <section id="prejoin" class="panel active">
+    <details id="adv" class="adv">
+      <summary>Server settings</summary>
+      <div class="server-row">
+        <label for="wsUrl">Server (WS)</label>
+        <input id="wsUrl" class="input" type="text" placeholder="ws://localhost:8080">
+        <select id="wsRecent" class="select"></select>
+        <button id="btnUseRecent" type="button" class="btn">Use recent</button>
+      </div>
+    </details>
+
+    <div class="join-row">
+      <label for="nickname">Your name</label>
+      <input id="nickname" class="input" type="text" placeholder="Enter your name">
+      <button id="btnConnect" type="button" class="btn primary">Join</button>
+      <button id="btnToggleAdv" type="button" class="btn">Change server</button>
+    </div>
+
+    <p class="tip">Tip: load this page from <code>http://localhost:8080</code> so WebCrypto works.</p>
+  </section>
+
+  <!-- Chat panel -->
+  <section id="chat" class="panel">
+    <div class="columns">
+
+      <!-- Left: online list -->
+      <aside class="left">
+        <button id="btnList" type="button" class="btn block primary">Online list</button>
+        <ul id="online" class="online"></ul>
+      </aside>
+
+      <!-- Right: conversation -->
+      <main class="right">
+        <div class="toolbar">
+          <button id="btnClear" type="button" class="btn">Clear chat</button>
+        </div>
+
+        <pre id="log" class="log" aria-live="polite"></pre>
+
+        <!-- Composer -->
+        <div class="composer">
+          <div class="to-row">
+            <label for="to">To</label>
+            <input id="to" class="input" type="text" placeholder="Type a user (name / id / stable id)">
+          </div>
+
+          <div class="send-row">
+            <input id="msg" class="input grow" type="text" placeholder="Type a message and press Enter">
+            <button id="btnSend" type="button" class="btn primary">Send</button>
+            <button id="btnSendAll" type="button" class="btn">Send to all</button>
+          </div>
+
+          <div class="file-row">
+            <input id="fileInput" class="file" type="file">
+            <button id="btnSendFile" type="button" class="btn">Send file</button>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script type="module" src="b64url.js"></script>
+  <script type="module" src="crypto.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
